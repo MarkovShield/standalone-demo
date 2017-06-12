@@ -1,5 +1,3 @@
-![MarkovShield](https://bitbucket.org/markovshield/mod_mshield/raw/develop/resources/markovshield_logo.png)
-
 # Welcome to MarkovShield
 
 ## What is MarkovShield?
