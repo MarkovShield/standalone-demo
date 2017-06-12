@@ -1,20 +1,20 @@
 version: '3'
 services:
   mshield_reverse_proxy:
-    image: markovshield/mshield-demo-reverse-proxy:1.0
+    image: markovshield/mshield-demo-reverse-proxy:2.0
     hostname: mshield_reverse_proxy
     ports:
       - "80:80"
       - "443:443"
 
   mshield_backend:
-    image: markovshield/mshield-demo-backend:1.0
+    image: markovshield/mshield-demo-backend:2.0
     hostname: mshield_backend
     expose:
       - "8888"
 
   mshield_flink_analyser:
-    image: markovshield/mshield-flink-analyser:1.0
+    image: markovshield/mshield-flink-analyser:2.0
     depends_on:
       - jobmanager
       - taskmanager
@@ -27,7 +27,7 @@ services:
       REDISPORT: '6379'
 
   mshield_flink_modelupdater:
-    image: markovshield/mshield-flink-modelupdater:1.0
+    image: markovshield/mshield-flink-modelupdater:2.0
     depends_on:
       - jobmanager
       - taskmanager
@@ -41,7 +41,7 @@ services:
       SESSIONTIMEOUT: '5'
 
   mshield_kafka_clickstreams:
-    image: markovshield/mshield-kafka-clickstreams:1.0
+    image: markovshield/mshield-kafka-clickstreams:2.0
     hostname: mshield_kafka_clickstreams
     depends_on:
       - broker
@@ -103,7 +103,7 @@ services:
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: 'zookeeper:2181'
 
   jobmanager:
-    image: markovshield/flink-manager:1.2.0
+    image: markovshield/flink-manager:1.2.1
     hostname: jobmanager
     depends_on:
       - redis
@@ -118,7 +118,7 @@ services:
       - JOB_MANAGER_RPC_ADDRESS=jobmanager
 
   taskmanager:
-    image: markovshield/flink-manager:1.2.0
+    image: markovshield/flink-manager:1.2.1
     expose:
       - "6121"
       - "6122"
