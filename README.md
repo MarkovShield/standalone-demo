@@ -14,7 +14,7 @@ The MarkovShield Apache reverse proxy module mod_mshield is placed in front of t
   * Drop user session if the Engine has detected a fraud (e.g. man-in-the-browser trojan like Gozi)
 
 ## How can I get started?
-To get started with MarkovShield you can run the demo application on your own system. The only requirement is that you have `docker` and `docker-compose` installed and running on your system.
+To get started with MarkovShield you can run the demo application on your own system. The only requirement is that you have `docker` and `docker-compose` installed and running on your system. Please make sure to add the current path of the `docker-compose` file to the allowed file shares list in the Docker settings (Docker -> Preferences -> File sharing).
 
 Just download the `docker-compose.yml` file and run the following command in the same directory as your just downloaded `docker-compose.yml` file is stored:
 
@@ -23,6 +23,12 @@ docker-compose -p mshield-demo up -d
 ```
 
 Finally visit the demo page at [https://localhost](https://localhost).
+
+**Hint:** If you are using Windows, please remove the following lines from the `docker-compose.yml` file (container `mshield_kafka_clickstreams`, lines 52 + 53):
+```yaml
+volumes:
+  - ./state-store:/opt/kafka-store
+```
 
 To shutdown the demo and clean up the created data use the following two commands:
 ```bash
