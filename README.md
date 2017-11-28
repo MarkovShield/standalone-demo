@@ -22,6 +22,13 @@ Just download the `docker-compose.yml` file and run the following command in the
 docker-compose -p mshield-demo up -d
 ```
 
+Listen to the kafka topic and redis channels:
+```bash
+kafkacat -C -b localhost -t MarkovClicks
+# or
+redis-cli psubscribe W*
+```
+
 Finally visit the demo page at [https://localhost](https://localhost).
 
 **Hint:** If you are using Windows, please remove the following lines from the `docker-compose.yml` file (container `mshield_kafka_clickstreams`, lines 52 + 53):
