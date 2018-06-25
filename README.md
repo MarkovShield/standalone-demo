@@ -22,11 +22,15 @@ Just download the `docker-compose.yml` file and run the following command in the
 docker-compose -p mshield-demo up -d
 ```
 
-Listen to the kafka topic and redis channels:
+Optional: Listen to the kafka topic and redis channels:
 ```bash
 kafkacat -C -b localhost -t MarkovClicks
 # or
 redis-cli psubscribe W*
+```
+**Note:** To listen on kafka topics using `kafkacat`, it's required to add the `broker` entry to the `hosts` file pointing to `127.0.0.1` (e.g. `/etc/hosts` for Linux/macOS):
+```bash
+127.0.0.1	localhost broker
 ```
 
 Finally visit the demo page at [https://localhost](https://localhost).
